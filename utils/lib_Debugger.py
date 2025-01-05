@@ -220,7 +220,8 @@ class Debugger:
             self._draw_progress_bar(frame_copy, frame.shape[1], frame.shape[0])
 
             # Show the frame
-            cv2.imshow("Debug Video", frame_copy)
+            frame_copy_resize = cv2.resize(frame_copy, (1920, 1080))
+            cv2.imshow("Debug Video", frame_copy_resize)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
             if cv2.waitKey(1) & 0xFF == 32:  # Pause on spacebar

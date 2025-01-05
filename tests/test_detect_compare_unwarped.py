@@ -49,9 +49,10 @@ annotated_frame_2 = results[0].plot()
 
 # paste both image side by side
 annotated_frame_3 = np.concatenate((annotated_frame_2, annotated_frame_1), axis=1)
+annotated_frame_3_resize = cv2.resize(annotated_frame_3, (1920, 1080))
 
 # Display the annotated frame
-cv2.imshow("Concatenated result", annotated_frame_3)
+cv2.imshow("Concatenated result", annotated_frame_3_resize)
 cv2.imwrite(output_path_3, annotated_frame_3)
 
 # Wait for a key press to close the display window

@@ -302,7 +302,8 @@ def extract_yolo_data():
                     color = class_colors.get(box[3])
                     cv2.rectangle(frame_display, (box[0][0], box[0][1]), (box[0][2], box[0][3]), color, 2)
                     cv2.putText(frame_display, f"{box[4]}: {box[3]}", (box[0][0], box[0][1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-                cv2.imshow("YOLO11 test boxes Tracking", frame_display)
+                frame_display_resize = cv2.resize(frame_display, (1920, 1080))
+                cv2.imshow("YOLO11 test boxes Tracking", frame_display_resize)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
 
@@ -488,7 +489,8 @@ def analyze_tracking_results(results, image_y_size):
             if global_state.funscript_distances:
                 frame_display = visualizer.draw_gauge(frame_display, global_state.funscript_distances[-1])
 
-            cv2.imshow("Combined Results", frame_display)
+            frame_display_resize = cv2.resize(frame_display, (1920, 1080))
+            cv2.imshow("Combined Results", frame_display_resize)
             cv2.waitKey(1)
 
     # Prepare Funscript data
